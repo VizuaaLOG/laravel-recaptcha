@@ -3,6 +3,7 @@
     "version": "1.0.0",
     "description": "Easily implement Google reCaptcha into your forms.",
     "license": "MIT",
+    "keywords": "laravel, recaptcha, captcha",
     "require": {
         "php": ">=5.5",
         "illuminate/support": "^5.2.0"
