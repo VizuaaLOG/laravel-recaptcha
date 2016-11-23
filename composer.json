@@ -1,6 +1,6 @@
 {
     "name": "vizuaalog/laravel-recaptcha",
-    "version": "1.0.0",
+    "version": "1.0.2",
     "description": "Easily implement Google reCaptcha into your forms.",
     "license": "MIT",
     "keywords": "laravel, recaptcha, captcha",
