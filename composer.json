@@ -1,0 +1,21 @@
+{
+    "name": "vizuaalog/laravel-recaptcha",
+    "version": "1.0.0",
+    "description": "Easily implement Google reCaptcha into your forms.",
+    "license": "MIT",
+    "require": {
+        "php": ">=5.5",
+        "illuminate/support": "^5.2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "VizuaaLOG\\Recaptcha\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Thomas Erbe",
+            "email": "vizuaalog@gmail.com"
+        }
+    ]
+}
