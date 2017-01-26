@@ -50,8 +50,16 @@ Within your form, you will need to render the reCaptcha box. You can do this by 
 {!! Recaptcha::render() !!}
 ```
 
-Within your controller where your form posts you can use the following method to check if the captcha was successful. This returns a boolean value:
+At the top of your controller you need to add a use statement to load in the `Recaptcha` facade, this is automatically registered via the `RecaptchaServiceController`.
+```PHP
+<?php
+
+use Recaptcha;
+...
 ```
+
+Within your controller where your form posts you can use the following method to check if the captcha was successful. This returns a boolean value:
+```PHP
 if(Recaptcha::check($request)) {
     // Success
 } else {
@@ -60,8 +68,36 @@ if(Recaptcha::check($request)) {
 ```
 
 If the check fails you can access the errors received from the API using the following method, this returns an array of the errors:
-```
+```PHP
 $errors = Recaptcha::getErrors();
+```
+
+Below is an example controller showing a potential 'real world' example.
+
+```PHP
+<?php
+
+namespace App\Controllers;
+
+use App\Post;
+use Recaptcha;
+use App\Http\Controllers\Controller;
+
+class PostController extends Controller {
+    // ... Your other methods above this
+    public function store(Request $request, $id)
+    {
+        // Check to see if the captcha was completed
+        if(!Recaptcha::check($request)) {
+            return 'Captcha error: ' . Recaptcha::getErrors()[0];
+        }
+
+        Post::create($request->except(['_token', 'g-recaptcha-response']));
+
+        return 'Completed';
+    }
+    // ... Your other methods below this
+}
 ```
 
 ## Issues / contribution
